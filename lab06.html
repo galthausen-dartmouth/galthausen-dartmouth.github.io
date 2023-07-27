@@ -9,12 +9,22 @@
 <body> 
 
 <h1  style= "font-family: calibri; background-color: tan"> The Dissappearing Deer of Northern Nevada ENVS061 </h1>
-<button id= "deer">
+<button id= "deer-img">
   Click here to see a mule deer!
 </button>
-<div hidden id= "deer">
-  <img id= "deer-img" src="https://media.istockphoto.com/id/1202369332/photo/a-mule-deer-buck-with-drop-tine-antlers.jpg?s=612x612&w=0&k=20&c=oZtQB_NNO1tIpzsVfawhT6d0DHAhQdS-YlQb9AZMRXQ=">
+<div id= "deer">
+  <img hidden id= "deer-img" src="https://media.istockphoto.com/id/1202369332/photo/a-mule-deer-buck-with-drop-tine-antlers.jpg?s=612x612&w=0&k=20&c=oZtQB_NNO1tIpzsVfawhT6d0DHAhQdS-YlQb9AZMRXQ=">
 </div>
+<script>
+$(button#deer-img).click(
+  functon() {
+    $("img#deer-img")toggle();
+  }
+  )
+  
+</script>
+
+  
 <h2  style= "font-family: calibri"> Declining Populations </h2>
   
 <p class="words" > Over the last thirty years, mule deer populations in Nevada have experienced gradual decline. 
