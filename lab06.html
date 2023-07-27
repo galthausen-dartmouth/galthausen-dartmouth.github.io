@@ -7,21 +7,12 @@
 </head>
 <!-- this is my lab06 webpage -->
 <body> 
-
 <h1  style= "font-family: calibri; background-color: tan"> The Dissappearing Deer of Northern Nevada ENVS061 </h1>
-<button id= "deer">
-  Click here to see a mule deer!
-</button>
-<div hidden id= "deer">
+
+<div id= "deer">
   <img id= "deer-img" src="https://media.istockphoto.com/id/1202369332/photo/a-mule-deer-buck-with-drop-tine-antlers.jpg?s=612x612&w=0&k=20&c=oZtQB_NNO1tIpzsVfawhT6d0DHAhQdS-YlQb9AZMRXQ=">
 </div>
-<script>
-$("button#deer").click(
-  functon() {
-    $("div#deer").toggle();
-  }
-  );
-</script>
+
 
   
 <h2  style= "font-family: calibri"> Declining Populations </h2>
@@ -49,7 +40,11 @@ $("button#deer").click(
 
 <h2 style= "font-family: calibri"> Population Data 2020-2023 </h2>
   <!-- add more data here -->
-  <table>
+<button id= "table">
+  Click here to see a table of stats!
+</button>
+  
+  <table hidden id="table">
 <tr>
   <th> Year </th>
   <th> Population </th>
@@ -75,6 +70,13 @@ $("button#deer").click(
 </tr>
     
   </table>
-
+  
+<script>
+$("button#table").click(
+  functon() {
+    $("table#table").toggle();
+  }
+  );
+</script>
 <p class= "words"> a link to my previous <a href= "http://galthausen-dartmouth.github.io/lab02.html"> lab02 </a> </p>
 </body>
