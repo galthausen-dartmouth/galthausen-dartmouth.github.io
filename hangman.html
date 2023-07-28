@@ -20,7 +20,7 @@
             console.log ("Clicked on " + id);
             
             if (guesses.includes(id)) {
-              $("#error_message").html("You have already guessed " + id) 
+              $("#error_message").html("You already guessed " + id) 
             } else {
               guesses = guesses + id; 
 
@@ -28,7 +28,8 @@
               
               if (total_guesses < 0) {
                 $("#error_message").html("You are out of guesses. YOU LOSE!")
-              } else { $("numleft").html(total_guesses)
+              } else {
+                $("#numleft").html(total_guesses)
               } 
             }
           }
