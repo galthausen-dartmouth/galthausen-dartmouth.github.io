@@ -23,7 +23,8 @@
               $("#error_message").html("You already guessed " + id) 
             } else {
               guesses = guesses + id; 
-              $("#" + id).css('text.decoration', 'line-through');
+              
+              $("#" + id).css('text-decoration', 'line-through');
 
               total_guesses = total_guesses - 1;  
               
