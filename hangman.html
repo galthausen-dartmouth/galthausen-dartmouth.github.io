@@ -24,12 +24,11 @@
             } else {
               guesses = guesses + id; 
 
-              total_guesses = total_guesses - 1;  
+              total_guesses = total_guesses - 1;  }
               
               if(total_guesses < 0) {
                 $("#error_message").html("You are out of guesses. YOU LOSE!")
               } else { $("numleft").html(total_guesses)
-              }
             }
           }
           )
