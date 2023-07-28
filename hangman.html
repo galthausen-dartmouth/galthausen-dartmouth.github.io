@@ -10,15 +10,16 @@
         function() {
           
       var total_guesses = 10; 
-      var word= "m a p s"; 
-      var blanks = "_ _ _ _";
+      var word= "maps"; 
+      var blanks = "____";
       var guesses = ""; 
           
         $(".letter").click(
           function () {
             var id = $(this).attr('id');
-            console.log ("Clicked on " + id)
-            if (guesses.includes(id) ) {
+            console.log ("Clicked on " + id);
+            
+            if(guesses.includes(id)) {
               $("#error_message").html ("You have already guessed " + id) 
             } else {
               guesses = guesses + id; 
