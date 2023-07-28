@@ -5,10 +5,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(document).ready(
+        var total_guess = 10; 
+      var word= "m a p s"; 
+      var blanks = "_ _ _ _";
+      var guesses = ""; 
+      
         function() {
         $(".letter").click(
           function () {
             var id = $(this).attr('id');
+            if (guesses.includes(id) ) {
+              $("#error_message").html ("You have already guessed" + id) 
+            }
             
           }
           )
