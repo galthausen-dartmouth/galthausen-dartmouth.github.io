@@ -18,7 +18,7 @@
       attribution: '&copy; < a href= "http://www.openstreetmap.org/copyright"> OpenStreetMap </a>, Tiles courtesy of <a href =  "http://hot.osm.org"> HOT OSM </a>' });
       function initialize() {
         var map= L.map('map', {
-          center :[43.7034, -72.2887], 
+          center :[43.2080556, -71.5380556], 
           zoom: 9, 
           layers: [OpenStreetMap_HOT]
         }) 
@@ -29,7 +29,7 @@
                  }
                   }).addTo(map);
         L.geoJson(wildlife_geojson, 
-                   {color: "FFC0CB", onEachFeature: function(feature, layer) {
+                   {color: "FFA500", onEachFeature: function(feature, layer) {
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
