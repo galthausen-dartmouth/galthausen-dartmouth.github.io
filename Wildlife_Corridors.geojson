@@ -1,4 +1,4 @@
-{
+var wildlife_geojson = {
 "type": "FeatureCollection",
 "name": "Connect_The_Coast_(CTC)_Wildlife_Corridors",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
