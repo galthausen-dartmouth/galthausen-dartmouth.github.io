@@ -19,7 +19,7 @@
       function initialize() {
         var map= L.map('map', {
           center :[43.7034, -72.2887], 
-          zoom: 15, 
+          zoom: 9, 
           layers: [OpenStreetMap_HOT]
         }) 
 
@@ -29,7 +29,7 @@
                  }
                   }).addTo(map);
         L.geoJson(wildlife_geojson, 
-                   {color: "00FF00", onEachFeature: function(feature, layer) {
+                   {color: "FFC0CB", onEachFeature: function(feature, layer) {
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
