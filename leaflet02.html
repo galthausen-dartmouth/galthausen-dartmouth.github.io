@@ -29,7 +29,7 @@
                  }
                   }).addTo(map);
         L.geoJson(wildlife_geojson, 
-                   {color: "FFA500", onEachFeature: function(feature, layer) {
+                   {color: "orange", onEachFeature: function(feature, layer) {
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
