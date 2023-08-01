@@ -29,7 +29,7 @@
                   }).addTo(map);
         L.geoJson(Wildlife_Corridors.geojson, 
                    {onEachFeature: function(feature, layer) {
-                    layer.bindPopup("<b> Type:" + feature.properties.Type + "</b>");
+                    layer.bindPopup("<b> Size of Wildlife Corridor:" + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
       }
