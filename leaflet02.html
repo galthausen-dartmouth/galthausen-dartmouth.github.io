@@ -22,7 +22,11 @@
           layers: [OpenStreetMap_HOT]
         }) 
 
-        L.geoJson(rivers_geojson).addTo(map);
+        L.geoJson(rivers_geojson, 
+                  {onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<b> River Name:" + feature.properties.River_Name + "</b>")
+                 }
+                  }).addTo(map);
       }
     </script>
   </head>
