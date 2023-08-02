@@ -8,6 +8,7 @@
     <style>
       #map { height: 400px; width: 700px; }
       html, body {height: 100%; margin: 0; padding: 0; }
+      #buttons {padding:5px;}
     </style>
     <script src="NH_Designated_Rivers_24K.geojson"> </script>
     <script src="Wildlife_Corridors1.geojson"></script>
@@ -55,8 +56,9 @@
   
   <body onload= "initialize()">
   <h1> Hello Campus! </h1>
-    <div id= "map"> 
-      
+    <div id= "map"> </div>
+    <div id="buttons">
+      <button id="toggleRivers"> Toggle the Rivers </button>
     </div>
     
   </body>
