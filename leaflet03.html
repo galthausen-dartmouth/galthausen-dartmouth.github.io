@@ -21,6 +21,7 @@
 
       function lineSymbology(feature) {
         var length = feature.properties.LENGTH;
+        var riversVisible= false;
         var lineWidth= 4; 
         var lineColor= "#ald76a";
         if (length < 30000) {lineColor= "#ADD8E6"; lineWidth = 3;} 
@@ -42,12 +43,20 @@
                     onEachFeature: function(feature, layer) {
                    layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>Length: " + feature.properties.LENGTH);
                  }
-                  }).addTo(map);
+                  })
         L.geoJson(wildlife_geojson, 
                    {color: "orange", onEachFeature: function(feature, layer) {
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
+        $("toggleRivers").click(function () {
+          if (riversVisible) {
+            riversVisible = false;
+            riversLayer.removeFrom(map);
+          } else { riversVisible= true; 
+                  riversLayer.addTo(map);
+          }
+        })
       }
 
       
