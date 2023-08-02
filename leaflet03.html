@@ -22,7 +22,7 @@
         var length = feature.properties.LENGTH;
         var lineWidth= 4; 
         var lineColor= "#ald76a";
-        if (length > 0) {lineColor= "#a777777"; lineWidth = 5;} 
+        if (length < 30000) {lineColor= "#a777777"; lineWidth = 3;} 
         if (length > 30000) {lineColor= "#e9ac35"; lineWidth = 6;}
         return {
           color: lineColor, 
