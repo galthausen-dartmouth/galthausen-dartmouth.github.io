@@ -40,8 +40,8 @@
           center :[43.2080556, -71.5380556], 
           zoom: 9, 
         }); 
-        var baseMaps= { "OSM"= OpenStreetMap_HOT, 
-                       "Stamen"= stamenLayer}
+        var baseMaps= { "OSM": OpenStreetMap_HOT, 
+                       "Stamen": stamenLayer}
           L.control.layers(baseMaps).addTo(map);
 
        riversLayer = L.geoJson(rivers_geojson, 
