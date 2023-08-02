@@ -21,9 +21,9 @@
       function lineSymbology(feature) {
         var length = feature.properties.LENGTH;
         var lineWidth= 4; 
-        var lineColor= "#ald76a;"
-        if (length > 10000) {lineColor= "a777777"; lineWidth = 5; } 
-        if (length > 20000} {lineColor= "e9ac35"; lineWidth = 10;}
+        var lineColor= "#ald76a";
+        if (length > 10000) {lineColor= "#a777777"; lineWidth = 5; } 
+        if (length > 20000} {lineColor= "#e9ac35"; lineWidth = 10;}
         return {
           color: lineColor 
           weight: lineWidth
