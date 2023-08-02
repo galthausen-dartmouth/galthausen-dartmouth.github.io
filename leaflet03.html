@@ -50,7 +50,7 @@
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
-        $("toggleRivers").click(function () {
+        $("#toggleRivers").click(function () {
           if (riversVisible) {
             riversVisible = false;
             riversLayer.removeFrom(map);
