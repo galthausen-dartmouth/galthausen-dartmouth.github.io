@@ -26,7 +26,7 @@
 
        riversLayer = L.geoJson(rivers_geojson, 
                   {onEachFeature: function(feature, layer) {
-                    layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>" + "Length:" + " feature.properties.LENGTH);
+                   layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>Length: " + feature.properties.LENGTH);
                  }
                   }).addTo(map);
         L.geoJson(wildlife_geojson, 
