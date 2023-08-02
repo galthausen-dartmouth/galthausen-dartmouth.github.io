@@ -22,8 +22,8 @@
         var length = feature.properties.LENGTH;
         var lineWidth= 4; 
         var lineColor= "#ald76a";
-        if (length > 15000) {lineColor= "#a777777"; lineWidth = 5; } 
-        if (length > 30000) {lineColor= "#e9ac35"; lineWidth = 10;}
+        if (length > 15000) {lineColor= "#a777777"; lineWidth = 5;} 
+        if (length > 30000) {lineColor= "#e9ac35"; lineWidth = 6;}
         return {
           color: lineColor, 
           weight: lineWidth,
@@ -43,7 +43,7 @@
                  }
                   }).addTo(map);
         L.geoJson(wildlife_geojson, 
-                   {color: "orange", onEachFeature: function(feature, layer) {
+                   {color: "blue", onEachFeature: function(feature, layer) {
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
