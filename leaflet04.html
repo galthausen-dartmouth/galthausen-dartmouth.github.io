@@ -1,0 +1,88 @@
+<!DOCTYPE html> 
+<html> 
+  
+  <head>
+  <title> Hello Campus! </title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+      #map { height: 400px; width: 500px; }
+      html, body {height: 100%; margin: 0; padding: 0; }
+      #buttons {padding:5px;}
+    </style>
+    <script src="NH_Designated_Rivers_24K.geojson"> </script>
+    <script src="Wildlife_Corridors1.geojson"></script>
+    
+    
+    <script>
+      var riversLayer;
+       var riversVisible = false;
+      var OpenStreetMap_HOT = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {maxZoom: 19, 
+      attribution: '&copy; < a href= "http://www.openstreetmap.org/copyright"> OpenStreetMap </a>, Tiles courtesy of <a href =  "http://hot.osm.org"> HOT OSM </a>' });
+
+      var OpenTopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	          maxZoom: 17,
+	          attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+              });
+      
+      function lineSymbology(feature) {
+        var length = feature.properties.LENGTH;
+        var lineWidth= 4; 
+        var lineColor= "#ald76a";
+        if (length < 30000) {lineColor= "#ADD8E6"; lineWidth = 3;} 
+        if (length > 30000) {lineColor= "#06038D"; lineWidth = 6;}
+        return {
+          color: lineColor, 
+          weight: lineWidth,
+          opacity: 1};
+      }
+      function initialize() {
+        var map= L.map('map', {
+          center :[43.2080556, -71.5380556], 
+          zoom: 9, 
+        }); 
+        var baseMaps= { "OSM": OpenStreetMap_HOT, 
+                       "Topo": OpenTopoMap}
+          L.control.layers(baseMaps).addTo(map);
+
+       riversLayer = L.geoJson(rivers_geojson, 
+                  {style: lineSymbology,
+                    onEachFeature: function(feature, layer) {
+                   layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>Length: " + feature.properties.LENGTH);
+                 }
+                  })
+        L.geoJson(wildlife_geojson, 
+                   {color: "orange", onEachFeature: function(feature, layer) {
+                    layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
+                 }
+                  }).addTo(map);
+        $("#toggleRivers").click(function () {
+          if (riversVisible) {
+            riversVisible = false;
+            riversLayer.removeFrom(map);
+          } else { riversVisible= true; 
+                  riversLayer.addTo(map);
+          }
+        })
+      }
+
+      
+    </script>
+  </head>
+  
+  <body onload= "initialize()">
+  <h1> Hello Campus! </h1>
+    <div id= "map"> </div>
+    <div id="buttons">
+      <button id="toggleRivers"> Toggle the Rivers </button>
+    </div>
+
+
+
+  </body>
+
+  
+
+
+</html>
