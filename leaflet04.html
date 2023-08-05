@@ -11,13 +11,12 @@
       html, body {height: 100%; margin: 0; padding: 0; }
       #buttons {padding:5px;}
     </style>
-    <script src="NH_Designated_Rivers_24K.geojson"> </script>
+    
     <script src="Wildlife_Corridors1.geojson"></script>
     
     
     <script>
-      var riversLayer;
-       var riversVisible = false;
+       var riversVisible = true;
       var OpenStreetMap_HOT = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {maxZoom: 19, 
       attribution: '&copy; < a href= "http://www.openstreetmap.org/copyright"> OpenStreetMap </a>, Tiles courtesy of <a href =  "http://hot.osm.org"> HOT OSM </a>' });
 
@@ -46,6 +45,10 @@
                        "Topo": OpenTopoMap}
           L.control.layers(baseMaps).addTo(map);
 
+	var response= $.ajax ({
+		url: 
+	})
+	      
        riversLayer = L.geoJson(rivers_geojson, 
                   {style: lineSymbology,
                     onEachFeature: function(feature, layer) {
