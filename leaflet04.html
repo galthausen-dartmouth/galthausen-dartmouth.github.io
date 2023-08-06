@@ -47,10 +47,17 @@
 
 	var response= $.ajax ({
 		url: "NH_Designated_Rivers_24K.geojson", 
-		
-	})
+		dataType: "json", 
+		success: console.log("rivers data loaded"), 
+		error: function(xhr) {
+			alert(xhr.statusText): 
+				
+		}
+	});
+
+	$.when(response).done(function() {
 	      
-       riversLayer = L.geoJson(rivers_geojson, 
+      var riversLayer = L.geoJson(rivers_geojson, 
                   {style: lineSymbology,
                     onEachFeature: function(feature, layer) {
                    layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>Length: " + feature.properties.LENGTH);
@@ -69,6 +76,7 @@
                   riversLayer.addTo(map);
           }
         })
+	});
       }
 
       
