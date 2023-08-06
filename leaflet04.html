@@ -62,7 +62,7 @@
                     onEachFeature: function(feature, layer) {
                    layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>Length: " + feature.properties.LENGTH);
                  }
-                  }),addTo(map);
+                  }).addTo(map);
         L.geoJson(wildlife_geojson, 
                    {color: "orange", onEachFeature: function(feature, layer) {
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
