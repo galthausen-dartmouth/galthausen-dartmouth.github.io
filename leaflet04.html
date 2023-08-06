@@ -57,7 +57,7 @@
 
 	$.when(response).done(function() {
 	      
-      var riversLayer = L.geoJson(rivers_geojson, 
+      var riversLayer = L.geoJson(response.responseJSON, 
                   {style: lineSymbology,
                     onEachFeature: function(feature, layer) {
                    layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>Length: " + feature.properties.LENGTH);
@@ -68,6 +68,7 @@
                     layer.bindPopup("<b> Size of Wildlife Corridor in Acres: " + feature.properties.Acres + "</b>");
                  }
                   }).addTo(map);
+	#("#toggleRivers").show();	
         $("#toggleRivers").click(function () {
           if (riversVisible) {
             riversVisible = false;
@@ -87,7 +88,7 @@
   <h1> Hello Campus! </h1>
     <div id= "map"> </div>
     <div id="buttons">
-      <button id="toggleRivers"> Toggle the Rivers </button>
+      <button id="toggleRivers" hidden> Toggle the Rivers </button>
     </div>
 
 
