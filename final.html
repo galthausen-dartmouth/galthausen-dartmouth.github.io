@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8" />
     <title> Fire, Vegetation and Precipitation in California </title>
@@ -9,35 +8,41 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
     <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js" crossorigin=""></script>
+    <style>
+<script src="caprecipdata.json"> </script>
+        #map {
+            height: 600px;
+            width: 700px;
+        }
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
-
 <body>
     <h1> How does Precipitation and Vegetation Type Impact Fire Location? </h1>
-    <div id="map" style="height: 600px; width: 700px;"></div>
-    <script src="caprecipdata.json"></script>
+    <div id="map"></div>
+
     <script>
+     L.geoJson(precip_geojson, 
+            {onEachFeature: function(feature, layer) {
+            layer.bindPopup("<b> Annual Precipitation: " + feature.properties.value + "</b>");
+                 }
+                  }).addTo(map);
+        
         const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
         const map = L.map("map").setView([37.487118, -119.967690], 6);
-
+        
         L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
             apikey: apiKey
-        }).addTo(map);
-
-        fetch("caprecipdata.json")
-            .then(response => response.json())
-            .then(precip_geojson => {
-                L.geoJson(precip_geojson, {
-                    onEachFeature: function (feature, layer) {
-                        layer.bindPopup("<b> Annual Precipitation: " + feature.properties.value + "</b>");
-                    }
-                }).addTo(map);
-            });
-
+            }).addTo(map);           
+       
         L.esri.featureLayer({
             url: "https://services.arcgis.com/jIL9msH9OI208GCb/arcgis/rest/services/California_Fire_Perimeters_2020/FeatureServer"
-        }).addTo(map);
+            }).addTo(map);
     </script>
 </body>
-
 </html>
-
