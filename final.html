@@ -30,7 +30,7 @@
     <div id="map"></div>
 
     <script>
-     L.geoJson(precip_geojson, 
+     L.geoJson(precip_geojson , 
             {onEachFeature: function(feature, layer) {
                     layer.bindPopup("<b> Annual Precipitation: " + feature.properties.value + "</b>");
                  }
