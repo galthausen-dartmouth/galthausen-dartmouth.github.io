@@ -41,7 +41,7 @@
 	      
       var riversLayer = L.geoJson(response.responseJSON, 
                   {onEachFeature: function(feature, layer) {
-                   layer.bindPopup("<b> Annual Precipitation: " + feature.properties.value + "</b>);}
+                   layer.bindPopup("<b> Annual Precipitation: " + feature.properties.value + "</b>");}
                   }).addTo(map);
         
 	const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
