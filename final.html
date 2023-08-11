@@ -37,8 +37,12 @@
                     }
                 }).addTo(map);
             },
-            error: function (xhr) {
-                alert(xhr.statusText);
+            error: function (xhr, textStatus, errorThrown) {
+                if (textStatus === "parsererror") {
+                    console.error("JSON parsing error:", errorThrown);
+                } else {
+                    console.error("AJAX error:", textStatus, errorThrown);
+                }
             }
         });
     </script>
