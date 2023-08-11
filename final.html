@@ -24,6 +24,11 @@
         L.esri.featureLayer({
             url: "https://services.arcgis.com/jIL9msH9OI208GCb/arcgis/rest/services/California_Fire_Perimeters_2020/FeatureServer"
         }).addTo(map);
+        
+        L.esri.tiledMapLayer({
+            url: "https://egis.fire.ca.gov/arcgis/rest/services/FRAP/fveg_WHR13/MapServer",
+            apiKey: apiKey,
+        }).addTo(map);
 
         $.ajax({
             url: "caprecipdata.json",
