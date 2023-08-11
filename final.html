@@ -28,10 +28,9 @@
 
     <script>
     var response= $.ajax ({
-		url: "caprecipdata.json
-", 
+		url: "caprecipdata.json", 
 		dataType: "json", 
-		success: console.log("rivers data loaded"), 
+		success: console.log("precip data loaded"), 
 		error: function(xhr) {
 			alert(xhr.statusText); 
 				
@@ -41,12 +40,11 @@
 	$.when(response).done(function() {
 	      
       var riversLayer = L.geoJson(response.responseJSON, 
-                  {style: lineSymbology,
-                    onEachFeature: function(feature, layer) {
-                   layer.bindPopup("<b> River Name: " + feature.properties.River_Name + "</b><br>Length: " + feature.properties.LENGTH);
-                 }
+                  {onEachFeature: function(feature, layer) {
+                   layer.bindPopup("<b> Annual Precipitation: " + feature.properties.value + "</b>);}
                   }).addTo(map);
-        const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
+        
+	const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
         const map = L.map("map").setView([37.487118, -119.967690], 6);
         
         L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
