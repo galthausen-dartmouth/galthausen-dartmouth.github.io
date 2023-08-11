@@ -1,43 +1,51 @@
-<!DOCTYPE html> 
-<html> 
-  
-  <head>
+<!DOCTYPE html>
+<html>
+
+<head>
     <meta charset="utf-8" />
-  <title> California Fire and Vegetation </title>
+    <title>California Fire and Vegetation</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
     <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js" crossorigin=""></script>
-   <style>
-      #map { height: 600px; width: 700px; }
-      html, body {height: 100%; margin: 0; padding: 0; }
+    <style>
+        #map {
+            height: 600px;
+            width: 700px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
     </style>
+</head>
 
-  </head>
-  
-  <h1> California Fire and Vegetation </h1>
-    <div id= "map"></div>
-	
- <script>
-      const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
-      const map = L.map("map").setView([37.487118, -119.967690], 6);
+<body>
+    <h1>California Fire and Vegetation</h1>
+    <div id="map"></div>
 
-      L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
-        apikey: apiKey
-        }).addTo(map);
-	
-      L.esri.featureLayer({
-          url: "https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/California_Fire_Perimeters_last_5_years_View/FeatureServer"
+    <script>
+        const apiKey = "YOUR_ESRI_API_KEY";
+        const map = L.map("map").setView([37.487118, -119.967690], 6);
+
+        L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
+            apikey: apiKey
         }).addTo(map);
 
-
-       L.esri.tiledMapLayer({
-        url:"https://egis.fire.ca.gov/arcgis/rest/services/FRAP/fveg_WHR13/MapServer",
-        apiKey: apiKey,
+        L.esri.tiledMapLayer({
+            url: "https://egis.fire.ca.gov/arcgis/rest/services/FRAP/fveg_WHR13/MapServer",
+            apiKey: apiKey,
         }).addTo(map);
- </script>
-  </body>
-  
+
+        L.esri.featureLayer({
+            url: "https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/California_Fire_Perimeters_last_5_years_View/FeatureServer"
+        }).addTo(map);
+    </script>
+</body>
 
 </html>
+
