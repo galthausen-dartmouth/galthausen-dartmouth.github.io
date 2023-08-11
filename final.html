@@ -34,11 +34,16 @@
 
         L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
             apikey: apiKey
-        }).addTo(map);
+            }).addTo(map);
+
+        L.esri.tiledMapLayer({
+            url:"https://egis.fire.ca.gov/arcgis/rest/services/FRAP/fveg_WHR13/MapServer",
+            apiKey: apiKey,
+            }).addTo(map);            
 
         L.esri.featureLayer({
             url: "https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/arcgis/rest/services/California_Fire_Perimeters_last_5_years_View/FeatureServer"
-        }).addTo(map);
+            }).addTo(map);
     </script>
 </body>
 
