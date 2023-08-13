@@ -32,11 +32,11 @@
             apikey: apiKey
         }).addTo(map);
 
-        L.esri.imageMapLayer({
+        L.esri.tiledMapLayer({
             url:"https://egis.fire.ca.gov/arcgis/rest/services/FRAP/fveg_WHR13/MapServer/0",
             apiKey: apiKey,
             opacity: 0.25, 
-            useCors: false
+            useCors: true
             }).addTo(map);            
 
         L.esri.featureLayer({
