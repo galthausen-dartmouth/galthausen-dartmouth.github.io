@@ -35,6 +35,8 @@
         L.esri.imageMapLayer({
             url:"https://egis.fire.ca.gov/arcgis/rest/services/FRAP/fveg_WHR13/MapServer/0",
             apiKey: apiKey,
+            opacity: 0.25, 
+            useCors: false
             }).addTo(map);            
 
         L.esri.featureLayer({
