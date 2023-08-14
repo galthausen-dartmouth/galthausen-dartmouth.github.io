@@ -42,7 +42,7 @@
             }).addTo(map);            
 
         popLayer = L.esri.featureLayer({
-            url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_Census_Populated_Places/FeatureServer/0"
+            url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_Census_Populated_Places/FeatureServer/0",
              onEachFeature: function(feature, layer) {
                    layer.bindPopup("<b> Population: " + feature.properties.POPULATION + </b>");
                  }
