@@ -42,6 +42,15 @@
         L.esri.featureLayer({
             url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_Census_Populated_Places/FeatureServer/0"
         });
+
+         $("#togglePop").click(function () {
+          if (popVisible) {
+            popVisible = false;
+            popLayer.removeFrom(map);
+          } else { popVisible= true; 
+                  popLayer.addTo(map);
+          }
+        })
         
     </script>
      <div id="buttons">
