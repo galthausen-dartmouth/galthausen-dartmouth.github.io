@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    var riversLayer;
+       var popVisible = false;
     <meta charset="utf-8" />
     <title>California Fire and Imperiled Vegetation</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -39,7 +41,7 @@
             useCors: false
             }).addTo(map);            
 
-        L.esri.featureLayer({
+        popLayer = L.esri.featureLayer({
             url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_Census_Populated_Places/FeatureServer/0"
         });
 
