@@ -32,15 +32,15 @@
             apikey: apiKey
         }).addTo(map);
 
-        L.esri.tiledMapLayer({
-            url:"https://egis.fire.ca.gov/arcgis/rest/services/FRAP/fveg_WHR13/MapServer/0",
+        L.esri.imageMapLayer({
+            url:"https://landscape12.arcgis.com/arcgis/rest/services/USA_CONUS_imperiled_species_richness_Plants/ImageServer",
             apiKey: apiKey,
             opacity: 0.25, 
             useCors: false
             }).addTo(map);            
 
         L.esri.featureLayer({
-            url: "https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/ArcGIS/rest/services/California_Fire_Perimeters_last_5_years_View/FeatureServer/0"
+            url: "https://services.arcgis.com/jIL9msH9OI208GCb/ArcGIS/rest/services/California_Fire_Perimeters_2020/FeatureServer/1"
         }).addTo(map);
     </script>
 </body>
