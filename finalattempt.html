@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>California and Endangered Vegetation</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+    <script src="https://unpkg.com/esri-leaflet@3.0.10/dist/esri-leaflet.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js" crossorigin=""></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #map { height: 600px; width: 800px; }
+        html, body { height: 100%; margin: 0; padding: 0; }
+        #buttons { padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>What Factors Impact Endangered Vegetation?</h1>
+    <div id="map"></div>
+    <script>
+        var vegLayer;
+        var popLayer;
+        var popVisible = false;
+        var vegVisible = true;
+        const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
+        const map = L.map("map").setView([37.487118, -119.967690], 6);
+
+        L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
+            apikey: apiKey
+        }).addTo(map);
+
+        vegLayer= L.esri.imageMapLayer({
+            url: "https://landscape12.arcgis.com/arcgis/rest/services/USA_CONUS_imperiled_species_richness_Plants/ImageServer",
+            apiKey: apiKey,
+            opacity: 1, 
+            useCors: false
+        }).addTo(map);            
+
+        popLayer = L.esri.featureLayer({
+            url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_Census_Populated_Places/FeatureServer/0",
+            onEachFeature: function(feature, layer) {
+                layer.bindPopup("<b> Population: " + feature.properties.POPULATION + "</b>");
+            }
+        });
+
+        $("#togglePop").click(function () {
+            if (popVisible) {
+                popVisible = false;
+                popLayer.removeFrom(map);
+            } else {
+                popVisible = true;
+                popLayer.addTo(map);
+                if (vegVisible) {
+                    vegVisible = false;
+                    vegLayer.removeFrom(map);
+                }
+            }
+        });
+
+        $("#toggleVeg").click(function () {
+            if (vegVisible) {
+                vegVisible = false;
+                vegLayer.removeFrom(map);
+            } else {
+                vegVisible = true;
+                vegLayer.addTo(map);
+                if (popVisible) {
+                    popVisible = false;
+                    popLayer.removeFrom(map);
+                }
+            }
+        });
+
+    </script>
+    <div id="buttons">
+        <button id="togglePop">Toggle the Population Layer</button>
+        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
+    </div>
+</body>
+</html>
