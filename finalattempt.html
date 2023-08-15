@@ -42,8 +42,8 @@
                 useCors: false
             }).addTo(map);
 
-            govLayer = L.esri.tiledMapLayer({
-                url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
+            govLayer = L.esri.featureMapLayer({
+                url: "https://services1.arcgis.com/ERdCHt0sNM6dENSD/ArcGIS/rest/services/Wilderness_Areas_in_the_United_States/FeatureServer/0",
                 apiKey: apiKey,
                 opacity: 0.8, 
                 useCors: false
