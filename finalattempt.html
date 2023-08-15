@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Government Land and Endangered Vegetation</title>
+    <title> Wildfires and Endangered Vegetation in California</title>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
@@ -15,19 +15,19 @@
     </style>
 </head>
 <body onload="initialize()">
-    <h1> Are Endangered Species Protected Within Government Land? </h1>
+    <h1> Wildfires and Endangered Vegetation in California </h1>
     <div id="map"></div>
     <div id="buttons">
-        <button id="toggleGov">Toggle the Government Wilderness Land Layer</button>
+        <button id="toggleGov">Toggle the Wildfire Layer</button>
         <button id="togglePop">Toggle the Population Layer</button>
     </div>
 
     <script>
         function initialize() {
             var vegLayer;
-            var govLayer;
+            var fireLayer;
             var popLayer;
-            var govVisible = false;
+            var fireVisible = false;
             var vegVisible = true;
             var popVisible= false;
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
@@ -44,14 +44,14 @@
                 useCors: false
             }).addTo(map);
 
-            govLayer = L.esri.featureLayer({
-                url: "https://services1.arcgis.com/ERdCHt0sNM6dENSD/ArcGIS/rest/services/Wilderness_Areas_in_the_United_States/FeatureServer/0",
+            fireLayer = L.esri.featureLayer({
+                url: "https://services1.arcgis.com/jUJYIo9tSA7EHvfZ/ArcGIS/rest/services/California_Fire_Perimeters_last_5_years_View/FeatureServer/0",
                 apiKey: apiKey,
                 opacity: 0.8, 
                 useCors: false,
-                color: "green", 
+                color: "red", 
                   onEachFeature: function(feature, layer) {
-                   layer.bindPopup("<b> Government Agency: " + feature.properties.Agency + "</b>");
+                   layer.bindPopup("<b> Fire: " + feature.properties.FIRE_NAME + "</b>");
                  }
             });
             popLayer = L.esri.tiledMapLayer({
@@ -74,12 +74,12 @@
                     }}
                      });
             
-          $("#toggleGov").click(function () {
-          if (govVisible) {
-            govVisible = false;
-            govLayer.removeFrom(map);
-          } else { govVisible= true; 
-                  govLayer.addTo(map);
+          $("#toggleFire").click(function () {
+          if (fireVisible) {
+            fireVisible = false;
+            fireLayer.removeFrom(map);
+          } else { fireVisible= true; 
+                  fireLayer.addTo(map);
           }
         });
       }
