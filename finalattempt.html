@@ -18,9 +18,8 @@
     <h1> Wildfires and Endangered Vegetation in California </h1>
     <div id="map"></div>
     <div id="buttons">
-        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
+        <button id="toggleVegPop">Toggle between Endangered Vegetation and Population</button>
         <button id="toggleFire">Toggle the Wildfire Layer</button>
-        <button id="togglePop">Toggle the Population Layer</button>
     </div>
 
     <script>
@@ -33,6 +32,7 @@
             var popVisible= false;
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
             const map = L.map("map").setView([37.487118, -119.967690], 6);
+            var currentVisibleLayer = vegLayer;
 
             L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
                 apikey: apiKey
@@ -54,38 +54,23 @@
                   onEachFeature: function(feature, layer) {
                    layer.bindPopup("<b> Fire: " + feature.properties.FIRE_NAME + "</b><br> Year: " + feature.properties.YEAR_);
                  }
-            }).addTo(map);
+            });
             popLayer = L.esri.tiledMapLayer({
                 url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
                 apiKey: apiKey,
                 opacity: 0.8, 
                 useCors: false
             });
-            
-      $("#togglePop").click(function () {
-                if (popVisible) {
-                    popVisible = false;
-                    popLayer.removeFrom(map);
+
+             $("#toggleVegPop").click(function () {
+                if (currentVisibleLayer === vegLayer) {
+                    currentVisibleLayer.removeFrom(map); 
+                    currentVisibleLayer = popLayer;
+                    popLayer.addTo(map); 
                 } else {
-                    popVisible = true;
-                    popLayer.addTo(map);
-                    if (vegVisible) {
-                        vegVisible = false;
-                        vegLayer.removeFrom(map);
-                    }}
-                     });
-            
-              $("#toggleVeg").click(function () {
-                if (vegVisible) {
-                    vegVisible = false;
-                    vegLayer.removeFrom(map);
-                } else {
-                    vegVisible = true;
-                    vegLayer.addTo(map);
-                    if (popVisible) {
-                        popVisible = false;
-                        popLayer.removeFrom(map);
-                    }
+                    currentVisibleLayer.removeFrom(map);
+                    currentVisibleLayer = vegLayer; 
+                    vegLayer.addTo(map); 
                 }
             });
             
