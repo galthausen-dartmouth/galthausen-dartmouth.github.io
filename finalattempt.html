@@ -14,8 +14,17 @@
         #buttons { padding: 5px; }
     </style>
 </head>
+<body onload="initialize()">
+    <h1>What Factors Will Impact Endangered Vegetation?</h1>
+    <div id="map"></div>
+    <div id="buttons">
+        <button id="togglePop">Toggle the Population Layer</button>
+        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
+        <button id="toggleTemp">Toggle the Temperature Change Layer</button>
+    </div>
+
     <script>
-      function initialize() {
+        function initialize() {
             var vegLayer;
             var popLayer;
             var tempLayer;
@@ -25,32 +34,32 @@
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
             const map = L.map("map").setView([39.809860, -98.555183], 4.2);
 
-        L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
-            apikey: apiKey
-        }).addTo(map);
+            L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
+                apikey: apiKey
+            }).addTo(map);
 
-        vegLayer= L.esri.imageMapLayer({
-            url: "https://landscape12.arcgis.com/arcgis/rest/services/USA_CONUS_imperiled_species_richness_Plants/ImageServer",
-            apiKey: apiKey,
-            opacity: 0.8, 
-            useCors: false
-        }).addTo(map);
+            vegLayer= L.esri.imageMapLayer({
+                url: "https://landscape12.arcgis.com/arcgis/rest/services/USA_CONUS_imperiled_species_richness_Plants/ImageServer",
+                apiKey: apiKey,
+                opacity: 0.8, 
+                useCors: false
+            }).addTo(map);
 
-        popLayer = L.esri.tiledMapLayer({
-            url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
-            apiKey: apiKey,
-            opacity: 0.8, 
-            useCors: false
-        });
+            popLayer = L.esri.tiledMapLayer({
+                url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
+                apiKey: apiKey,
+                opacity: 0.8, 
+                useCors: false
+            });
 
-         tempLayer = L.esri.featureLayer({
-            url: "https://services.arcgis.com/cJ9YHowT8TU7DUyn/ArcGIS/rest/services/CLM___Climate_Indicator_U_S__Temperatures__EPA_/FeatureServer/0",
-            apiKey: apiKey,
-            opacity: 0.8, 
-            useCors: false})
-     };
+            tempLayer = L.esri.featureLayer({
+                url: "https://services.arcgis.com/cJ9YHowT8TU7DUyn/ArcGIS/rest/services/CLM___Climate_Indicator_U_S__Temperatures__EPA_/FeatureServer/0",
+                apiKey: apiKey,
+                opacity: 0.8, 
+                useCors: false
+            });
 
-          $("#togglePop").click(function () {
+            $("#togglePop").click(function () {
                 if (popVisible) {
                     popVisible = false;
                     popLayer.removeFrom(map);
@@ -103,14 +112,8 @@
                     }
                 }
             });
-            </script>
- <body onload= "initialize()">
-    <h1>What Factors Will Impact Endangered Vegetation?</h1>
-    <div id="map"></div>
-     <div id="buttons">
-        <button id="togglePop">Toggle the Population Layer</button>
-        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
-        <button id="toggleTemp">Toggle the Temperature Change Layer</button>
-    </div>
+        }
+    </script>
 </body>
 </html>
+
