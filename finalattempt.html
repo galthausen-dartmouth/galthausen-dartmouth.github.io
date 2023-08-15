@@ -58,8 +58,9 @@
             });
 
          var overlayMaps = { 
-            "Endangered Vegetation Density in 2022": vegLayer
-            "Population Growth Rate in The Last Five Years": popLayer };
+            "Endangered Vegetation Density in 2022": vegLayer,
+            "Population Growth Rate in The Last Five Years": popLayer};
+        
          var layerControl = L.control.layers(overlayMaps).addTo(map);
 
           $("#toggleFire").click(function () {
