@@ -19,7 +19,6 @@
     <div id="map"></div>
     <div id="buttons">
         <button id="toggleGov">Toggle the Government Wilderness Land Layer</button>
-        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
     </div>
 
     <script>
@@ -48,35 +47,17 @@
                 opacity: 0.8, 
                 useCors: false
             });
-
-            $("#toggleGov").click(function () {
-                if (govVisible) {
-                    govVisible = false;
-                    govLayer.removeFrom(map);
-                } else {
-                    popVisible = true;
-                    popLayer.addTo(map);
-                    if (vegVisible) {
-                        vegVisible = false;
-                        vegLayer.removeFrom(map);
-                    }
-                }
-            });
-
-            $("#toggleVeg").click(function () {
-                if (vegVisible) {
-                    vegVisible = false;
-                    vegLayer.removeFrom(map);
-                } else {
-                    vegVisible = true;
-                    vegLayer.addTo(map);
-                    if (govVisible) {
-                        govVisible = false;
-                        govLayer.removeFrom(map);
-                    }
-                }
-            });
-        }
+        
+            
+          $("#toggleGov").click(function () {
+          if (govVisible) {
+            govVisible = false;
+            govLayer.removeFrom(map);
+          } else { govVisible= true; 
+                  govLayer.addTo(map);
+          }
+        });
+      }
     </script>
 </body>
 </html>
