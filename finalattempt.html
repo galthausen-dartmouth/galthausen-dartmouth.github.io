@@ -62,14 +62,17 @@
                 useCors: false
             });
             
-            $("#togglePop").click(function () {
+      $("#togglePop").click(function () {
                 if (popVisible) {
                     popVisible = false;
                     popLayer.removeFrom(map);
                 } else {
                     popVisible = true;
                     popLayer.addTo(map);
-                    }
+                    if (vegVisible) {
+                        vegVisible = false;
+                        vegLayer.removeFrom(map);
+                    }}
                      });
             
               $("#toggleVeg").click(function () {
@@ -79,8 +82,12 @@
                 } else {
                     vegVisible = true;
                     vegLayer.addTo(map);
-                  
-                    }});
+                    if (popVisible) {
+                        popVisible = false;
+                        popLayer.removeFrom(map);
+                    }
+                }
+            });
             
           $("#toggleFire").click(function () {
           if (fireVisible) {
