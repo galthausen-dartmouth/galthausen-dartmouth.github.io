@@ -53,7 +53,7 @@
                   onEachFeature: function(feature, layer) {
                    layer.bindPopup("<b> Fire: " + feature.properties.FIRE_NAME + "</b>");
                  }
-            });
+            }).addTo(map);
             popLayer = L.esri.tiledMapLayer({
                 url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
                 apiKey: apiKey,
