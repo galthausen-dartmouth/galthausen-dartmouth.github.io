@@ -23,7 +23,7 @@
         <button id="toggleTemp">Toggle the Temperature Change Layer</button>
     </div>
     <script>
-     $(document).ready(function() {
+      function initialize() {
             var vegLayer;
             var popLayer;
             var tempLayer;
@@ -56,7 +56,7 @@
             apiKey: apiKey,
             opacity: 0.8, 
             useCors: false})
-        });
+     };
 
           $("#togglePop").click(function () {
                 if (popVisible) {
