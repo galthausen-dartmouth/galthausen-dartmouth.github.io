@@ -19,6 +19,7 @@
     <div id="map"></div>
     <div id="buttons">
         <button id="toggleGov">Toggle the Government Wilderness Land Layer</button>
+        <button id="togglePop">Toggle the Population Layer</button>
     </div>
 
     <script>
@@ -51,7 +52,25 @@
                    layer.bindPopup("<b> Government Agency: " + feature.properties.Agency + "</b>");
                  }
             });
-        
+            popLayer = L.esri.tiledMapLayer({
+                url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
+                apiKey: apiKey,
+                opacity: 0.8, 
+                useCors: false
+            });
+            
+            $("#togglePop").click(function () {
+                if (popVisible) {
+                    popVisible = false;
+                    popLayer.removeFrom(map);
+                } else {
+                    popVisible = true;
+                    popLayer.addTo(map);
+                    if (vegVisible) {
+                        vegVisible = false;
+                        vegLayer.removeFrom(map);
+                    }
+                     });
             
           $("#toggleGov").click(function () {
           if (govVisible) {
