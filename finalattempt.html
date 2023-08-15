@@ -18,9 +18,9 @@
     <h1> Wildfires and Endangered Vegetation in California </h1>
     <div id="map"></div>
     <div id="buttons">
+        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
         <button id="toggleGov">Toggle the Wildfire Layer</button>
         <button id="togglePop">Toggle the Population Layer</button>
-        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
     </div>
 
     <script>
@@ -74,6 +74,20 @@
                         vegLayer.removeFrom(map);
                     }}
                      });
+            
+              $("#toggleVeg").click(function () {
+                if (vegVisible) {
+                    vegVisible = false;
+                    vegLayer.removeFrom(map);
+                } else {
+                    vegVisible = true;
+                    vegLayer.addTo(map);
+                    if (popVisible) {
+                        popVisible = false;
+                        popLayer.removeFrom(map);
+                    }
+                }
+            });
             
           $("#toggleFire").click(function () {
           if (fireVisible) {
