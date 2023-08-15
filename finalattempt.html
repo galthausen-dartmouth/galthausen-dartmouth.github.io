@@ -52,7 +52,7 @@
                 useCors: false,
                 color: "red", 
                   onEachFeature: function(feature, layer) {
-                   layer.bindPopup("<b> Fire: " + feature.properties.FIRE_NAME + "</b><br> Year: " + feature.properties.YEAR_;
+                   layer.bindPopup("<b> Fire: " + feature.properties.FIRE_NAME + "</b><br> Year: " + feature.properties.YEAR_);
                  }
             }).addTo(map);
             popLayer = L.esri.tiledMapLayer({
