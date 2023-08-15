@@ -18,19 +18,11 @@
     <h1> Wildfires, Population Pressure and Endangered Vegetation in California </h1>
     <div id="map"></div>
     <div id="buttons">
-        <button id="toggleVegPop">Toggle between Endangered Vegetation and Population</button>
         <button id="toggleFire">Toggle the Wildfire Layer</button>
     </div>
 
     <script>
         function initialize() {
-            var vegLayer;
-            var fireLayer;
-            var popLayer;
-            var fireVisible = false;
-            var vegVisible = true;
-            var popVisible= false;
-            var currentVisibleLayer = vegLayer;
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
             const map = L.map("map").setView([37.487118, -119.967690], 6);
 
@@ -56,6 +48,7 @@
                    layer.bindPopup("<b> Fire: " + feature.properties.FIRE_NAME + "</b><br> Year: " + feature.properties.YEAR_);
                  }
             }).addTo(map);
+            
             popLayer = L.esri.tiledMapLayer({
                 url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
                 apiKey: apiKey,
@@ -63,18 +56,11 @@
                 useCors: false
             });
 
-             $("#toggleVegPop").click(function () {
-                if (currentVisibleLayer === vegLayer) {
-                    currentVisibleLayer.removeFrom(map); 
-                    currentVisibleLayer = popLayer;
-                    popLayer.addTo(map); 
-                } else {
-                    currentVisibleLayer.removeFrom(map);
-                    currentVisibleLayer = vegLayer; 
-                    vegLayer.addTo(map); 
-                }
-            });
-            
+         var overlayMaps = { 
+           "Endangered Vegetation Density in 2022" = vegLayer
+           "Population Growth Rate in The Last Five Years" = popLayer };
+         var layerControl = L.control.layers(overlayMaps).addTo(map);
+
           $("#toggleFire").click(function () {
           if (fireVisible) {
             fireVisible = false;
