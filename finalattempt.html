@@ -21,8 +21,10 @@
      $(document).ready(function() {
             var vegLayer;
             var popLayer;
+            var tempLayer;
             var popVisible = false;
             var vegVisible = true;
+            var tempVisible = false;
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
             const map = L.map("map").setView([39.809860, -98.555183], 4.2);
 
@@ -44,42 +46,69 @@
             useCors: false
         });
 
-         tempLayer = 
-
-
-        $("#togglePop").click(function () {
-            if (popVisible) {
-                popVisible = false;
-                popLayer.removeFrom(map);
-            } else {
-                popVisible = true;
-                popLayer.addTo(map);
-                if (vegVisible) {
-                    vegVisible = false;
-                    vegLayer.removeFrom(map);
-                }
-            }
+         tempLayer = L.esri.featureLayer({
+            url: "https://services.arcgis.com/cJ9YHowT8TU7DUyn/ArcGIS/rest/services/CLM___Climate_Indicator_U_S__Temperatures__EPA_/FeatureServer/0",
+            apiKey: apiKey,
+            opacity: 1, 
+            useCors: false
+             ;
+                 }
         });
 
-        $("#toggleVeg").click(function () {
-            if (vegVisible) {
-                vegVisible = false;
-                vegLayer.removeFrom(map);
-            } else {
-                vegVisible = true;
-                vegLayer.addTo(map);
+          $("#togglePop").click(function () {
                 if (popVisible) {
                     popVisible = false;
                     popLayer.removeFrom(map);
+                } else {
+                    popVisible = true;
+                    popLayer.addTo(map);
+                    if (vegVisible) {
+                        vegVisible = false;
+                        vegLayer.removeFrom(map);
+                    }
+                    if (tempVisible) {
+                        tempVisible = false;
+                        tempLayer.removeFrom(map);
+                    }
                 }
-            }
-        });
-        });
+            });
 
+            $("#toggleVeg").click(function () {
+                if (vegVisible) {
+                    vegVisible = false;
+                    vegLayer.removeFrom(map);
+                } else {
+                    vegVisible = true;
+                    vegLayer.addTo(map);
+                    if (popVisible) {
+                        popVisible = false;
+                        popLayer.removeFrom(map);
+                    }
+                    if (tempVisible) {
+                        tempVisible = false;
+                        tempLayer.removeFrom(map);
+                    }
+                }
+            });
+
+            $("#toggleTemp").click(function () {
+                if (tempVisible) {
+                    tempisible = false;
+                    tempLayer.removeFrom(map);
+                } else {
+                    tempVisible = true;
+                    tempLayer.addTo(map);
+                    if (popVisible) {
+                        popVisible = false;
+                        popLayer.removeFrom(map);
+                    }
+                    if (vegVisible) {
+                        vegVisible = false;
+                        vegLayer.removeFrom(map);
+                    }
+                }
+            });
+        });
     </script>
-    <div id="buttons">
-        <button id="togglePop">Toggle the Projected Population Pressure Layer</button>
-        <button id="toggleVeg">Toggle the Endangered Vegetation Layer</button>
-    </div>
 </body>
 </html>
