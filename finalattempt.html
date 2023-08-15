@@ -23,6 +23,7 @@
 
     <script>
         function initialize() {
+            var fireVisible = true;
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
             const map = L.map("map").setView([37.487118, -119.967690], 6);
 
@@ -57,8 +58,8 @@
             });
 
          var overlayMaps = { 
-           "Endangered Vegetation Density in 2022" = vegLayer
-           "Population Growth Rate in The Last Five Years" = popLayer };
+            "Endangered Vegetation Density in 2022": vegLayer
+            "Population Growth Rate in The Last Five Years": popLayer };
          var layerControl = L.control.layers(overlayMaps).addTo(map);
 
           $("#toggleFire").click(function () {
