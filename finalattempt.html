@@ -34,16 +34,17 @@
             apiKey: apiKey,
             opacity: 1, 
             useCors: false
-        }).addTo(map);            
+        }).addTo(map);
 
-        popLayer = L.esri.featureLayer({
-            url: "https://services.arcgis.com/P3ePLMYs2RVChkJx/ArcGIS/rest/services/USA_Census_Populated_Places/FeatureServer/0",
-              apiKey: apiKey,
-            useCors: false,
-            onEachFeature: function(feature, layer) {
-                layer.bindPopup("<b> Population: " + feature.properties.POPULATION + "</b>");
-            }
+https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer
+
+        popLayer = L.esri.tiledMapLayer({
+            url: "https://tiles.arcgis.com/tiles/4yjifSiIG17X0gW4/arcgis/rest/services/Population_Pressure_2015/MapServer",
+            apiKey: apiKey,
+            opacity: 1, 
+            useCors: false
         });
+
 
         $("#togglePop").click(function () {
             if (popVisible) {
