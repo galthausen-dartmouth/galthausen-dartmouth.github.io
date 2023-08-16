@@ -9,13 +9,48 @@
     <script src="https://unpkg.com/esri-leaflet-vector@4.1.0/dist/esri-leaflet-vector.js" crossorigin=""></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
-        #map { height: 500px; width: 1000px; }
-        html, body { height: 100%; margin: 0; padding: 0; }
-        #buttons { padding: 5px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        
+        #header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em;
+        }
+        
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+        
+        #buttons {
+            text-align: center;
+            margin-top: 10px;
+        }
+        
+        button {
+            padding: 8px 16px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #555;
+        }
     </style>
 </head>
 <body onload="initialize()">
-    <h1> Wildfires, Population Pressure and Imperiled Vegetation in California </h1>
+    <div id="header">
+        <h1> Wildfires, Population Pressure and Imperiled Vegetation in California </h1>
+    </div>
     <div id="map"></div>
     <div id="buttons">
         <button id="toggleFire">Toggle the Wildfire Layer</button>
