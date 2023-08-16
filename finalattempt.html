@@ -51,10 +51,31 @@
     <div id="header">
         <h1> Wildfires, Population Pressure and Imperiled Vegetation in California </h1>
     </div>
+    
+    <p>
+California’s vegetation is in danger. According to Kathleen Wong at the UC Natural Reserve System, California’s plant biodiversity is primarily threatened by human population growth and natural disasters, like wildfires, intensified by climate change. As of now, California is the most biodiverse state with over 6,500 plant species. This biodiversity is driven by the large variety of landscapes including deserts, conifer forests, salt marshes and alpine tundras. However, it is unlikely such biodiversity will remain as more of California becomes urbanized and wildfires worsen. 
+
+Since 1900 California has lost 90 percent of its  wetlands, 99 percent of its riparian areas, and most of its native grasslands. This degradation is a direct result of residential and industrial development. Just last year, housing growth increased by 0.85% as people moved from cities into the suburbs. Imagine the loss in plant habitat. Furthermore, the strength, size, and frequency of wildfires are increasing. The largest wildfires in California history have occurred in the last two decades. Experts estimate that wildfires are five times bigger than those in 1971. This number will only increase with extended drought and higher temperatures. 
+
+Now that you understand the severity of California’s loss in plant biodiversity, engage with the map below. The goal of this map is to visualize the effects that wildfires and population growth have on vascular plant species. 
+
+    </p>
+    
     <div id="map"></div>
     <div id="buttons">
         <button id="toggleFire">Toggle the Wildfire Layer</button>
     </div>
+
+    <p>
+The map is made up of three layers. The first layer, the default layer, is a layer of imperiled vascular plant species in 2022. This layer displays numbers of vascular plants that are protected by the Endangered Species Act and/or considered to be in danger of extinction. Orange areas are locations with a high density of imperiled species whereas purple areas are locations with a low density of imperiled species. 
+
+The population pressure layer expresses aggregate population growth over the last five years on a green (growth) to purple (decrease) scale. This layer represents areas of high population density and urbanization. 
+
+The final toggle layer shows California wildfires between 2022-2018. Each polygon displays an individual fire and is denoted with a name and year. 
+
+In short, this map visualizes the impacts of population growth and wildfires on endangered plant species. Clearly, urban areas are the biggest cause of the loss in plant biodiversity. Other areas with a high density of endangered plant species are generally within or around fire boundaries. While these impacts are evident, future maps should explain additional factors that contribute to an increase in endangered species including agriculture and logging.
+
+    </p>
 
     <script>
         function initialize() {
@@ -91,6 +112,8 @@
                 opacity: 0.8, 
                 useCors: false
             });
+
+        
 
          var overlayMaps = { 
             "Imperiled Vegetation Density in 2022": vegLayer,
