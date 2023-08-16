@@ -30,8 +30,13 @@
         #map {
             height: 500px;
             width: 80%;
-            text-align: center;
         }
+
+        #map-container {
+            width: 80%;
+            margin: 0 auto;
+        }
+
         
         #buttons {
             text-align: center;
@@ -64,8 +69,9 @@
 
     <p> Now that you understand the severity of California’s loss in plant biodiversity, engage with the map below. The goal of this map is to visualize the effects that wildfires and population growth have on vascular plant species. </p>
 
-    
+    <div id= "map-container">
     <div id="map"></div>
+    </div>
     <div id="buttons">
         <button id="toggleFire">Toggle the Wildfire Layer</button>
     </div>
