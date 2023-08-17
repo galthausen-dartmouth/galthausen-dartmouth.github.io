@@ -49,6 +49,16 @@
             height: auto;
             margin: 0 5px;
         }
+      .image-container {
+            text-align: center;
+            margin: 0 5px;
+         }
+
+      figcaption {
+             margin-top: 5px;
+            font-style: italic;
+             color: #666;
+         }
         
         #buttons {
             text-align: center;
