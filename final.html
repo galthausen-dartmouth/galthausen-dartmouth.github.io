@@ -102,9 +102,11 @@
             const californiaPolygon = L.polygon(californiaBoundaries);
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
             const map = L.map("map").setView([37.487118, -119.967690], 6);
-            map.on('move', function () {
+              map.on('move', function () {
                 const mapCenter = map.getCenter();
-                if (!californiaPolygon.contains(mapCenter)) {
+                const californiaBounds = L.latLngBounds(californiaBoundaries);
+    
+                if (!californiaBounds.contains(mapCenter)) {
                 map.setView([37.487118, -119.967690], 6);
                 }
                 });
