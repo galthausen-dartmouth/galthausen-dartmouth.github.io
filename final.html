@@ -92,15 +92,22 @@
 
     <script>
         function initialize() {
-               var southWest = L.latLng(40.712, -74.227),
-                    northEast = L.latLng(40.774, -74.125),
-                    bounds = L.latLngBounds(southWest, northEast)
+            const californiaBoundaries = [
+                [32.534156, -124.482003],
+                [35.001857, -114.130775],
+                [42.009452, -114.131212],
+                [42.009452, -124.416363]
+                    ];
             var fireVisible = true;
+            const californiaPolygon = L.polygon(californiaBoundaries);
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
-            const map = L.map("map").setView([37.487118, -119.967690], 6, 
-                        maxBounds: bounds,
-                        );
-
+            const map = L.map("map").setView([37.487118, -119.967690], 6);
+            map.on('move', function () {
+                const mapCenter = map.getCenter();
+                if (!californiaPolygon.contains(mapCenter)) {
+                map.setView([37.487118, -119.967690], 6);
+                }
+                });
 
             L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
                 apikey: apiKey
