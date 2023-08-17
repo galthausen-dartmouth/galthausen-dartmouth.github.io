@@ -38,7 +38,7 @@
 
     <p> Now that you understand the severity of California’s loss in plant biodiversity, engage with the map below. The goal of this map is to visualize the effects that wildfires and population growth have on vascular plant species. </p>
     </div>
-
+    
         
     <div id= "map-container">
     <div id="map"></div>
@@ -92,9 +92,15 @@
 
     <script>
         function initialize() {
+               var southWest = L.latLng(40.712, -74.227),
+                    northEast = L.latLng(40.774, -74.125),
+                    bounds = L.latLngBounds(southWest, northEast)
             var fireVisible = true;
             const apiKey = "AAPK5c56055b0da1494abff6de6f7d7455c8zhvX__FodLqdRT-HFqoHfFXoa6-FTvBdD5zX_UQ85CR-RXVk0mOieuNm0Bv-oV6O";
-            const map = L.map("map").setView([37.487118, -119.967690], 6);
+            const map = L.map("map").setView([37.487118, -119.967690],
+                        zoom: 6, 
+                        maxBounds: bounds,
+                        );
 
 
             L.esri.Vector.vectorBasemapLayer("osm/standard-relief", {
